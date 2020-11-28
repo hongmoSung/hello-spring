@@ -3,10 +3,12 @@ package io.hongmo.hellospring.service;
 import io.hongmo.hellospring.domain.Member;
 import io.hongmo.hellospring.repository.MemberRepository;
 import io.hongmo.hellospring.repository.MemoryMemberRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;

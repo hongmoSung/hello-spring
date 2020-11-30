@@ -1,28 +1,33 @@
 package io.hongmo.hellospring;
 
-import io.hongmo.hellospring.repository.JpaMemberRepository;
+import io.hongmo.hellospring.repository.EmployeesRepository;
 import io.hongmo.hellospring.repository.MemberRepository;
+import io.hongmo.hellospring.service.EmployeesService;
 import io.hongmo.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 @Configuration
 public class SpringConfig {
 
     private final MemberRepository memberRepository;
+    private final EmployeesRepository employeesRepository;
 
     @Autowired
-    public SpringConfig(MemberRepository memberRepository) {
+    public SpringConfig(MemberRepository memberRepository, EmployeesRepository employeesRepository) {
         this.memberRepository = memberRepository;
+        this.employeesRepository = employeesRepository;
     }
 
     @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository);
+    }
+
+    @Bean
+    public EmployeesService employeesService() {
+        return new EmployeesService(employeesRepository);
     }
 
 //    @Bean
